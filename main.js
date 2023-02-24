@@ -16,4 +16,10 @@ function addBookToLibrary() {
   // stuff here..
 }
 
+
+const form = document.querySelector("form")
+const data = new FormData(form)
+
 console.log(myLibrary)
+
+console.log(data)

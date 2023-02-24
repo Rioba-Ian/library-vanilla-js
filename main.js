@@ -29,7 +29,13 @@ form.addEventListener("submit", function (e) {
     formData.append('read', false)
   }
 
-  console.log([...formData.entries()])
+  const formDataObj = Object.fromEntries(formData.entries())
+
+  myLibrary = [...myLibrary, formDataObj]
+  console.log(formDataObj)
+  console.log(myLibrary)
+
+  form.reset()
 })
 
 

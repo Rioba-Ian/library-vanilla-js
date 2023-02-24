@@ -18,8 +18,32 @@ function addBookToLibrary() {
 
 
 const form = document.querySelector("form")
-const data = new FormData(form)
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault()
+
+  const formData = new FormData(form)
+
+  const readVal = formData.get('read')
+  if (!readVal) {
+    formData.append('read', false)
+  }
+
+  console.log([...formData.entries()])
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 console.log(myLibrary)
-
-console.log(data)

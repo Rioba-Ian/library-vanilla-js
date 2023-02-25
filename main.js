@@ -36,16 +36,22 @@ form.addEventListener("submit", function (e) {
   console.log(myLibrary)
 
   form.reset()
+  closeModal()
 })
 
 
+// modal functionality
+
+const modal = document.querySelector("#modal")
+
+const openModalBtn = document.querySelector(".add-book")
+const closeModalBtn = document.querySelector("#close-modal")
+const overlay = document.querySelector(".overlay")
 
 
+openModalBtn.addEventListener("click", openModal)
 
-
-
-
-
+closeModalBtn.addEventListener("click", closeModal)
 
 
 
@@ -53,3 +59,14 @@ form.addEventListener("submit", function (e) {
 
 
 console.log(myLibrary)
+
+
+function openModal() {
+  modal.classList.remove("hidden")
+  overlay.classList.remove("hidden")
+}
+
+function closeModal() {
+  modal.classList.add("hidden")
+  overlay.classList.add("hidden")
+}

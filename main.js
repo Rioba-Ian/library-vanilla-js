@@ -47,10 +47,10 @@ function displayBooks() {
   card.classList.add("card");
 
   myLibrary.map((bookItem) => {
-    card.innerHTML = `<h3>${bookItem.book}</h3>
-                    <h4>${bookItem.author}</h4>
-                    <p class="book--pages">${bookItem.pages}</p>
-                    <p class="book--read">${bookItem.read == true ? "Read" : "Not yet read."}</p>
+    card.innerHTML = `<h3>Book: ${bookItem.book}</h3>
+                    <h4>Author: ${bookItem.author}</h4>
+                    <p class="book--pages">Pages: ${bookItem.pages}</p>
+                    <p class="book--read">Read Status: ${bookItem.read == true ? "Read" : "Not yet read."}</p>
                     `;
   })
 

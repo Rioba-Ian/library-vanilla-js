@@ -16,8 +16,6 @@ function Book() {
 }
 
 function addBookToLibrary() {
-  // stuff here..
-
   // add book to my library
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -38,30 +36,47 @@ function addBookToLibrary() {
     form.reset();
     closeModal();
 
-    // bookCards.remove(bookCards.children)
-
-    displayBooks();
-
+    displayBooks()
   });
+
 }
 
+
 function displayBooks() {
-  for (let bookItem of myLibrary) {
-    const card = document.createElement("div");
-    card.classList.add("card");
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  myLibrary.map((bookItem) => {
     card.innerHTML = `<p>${bookItem.book}</p>
                     <p>${bookItem.author}</p>
                     <p>${bookItem.book}</p>
                     <p>${bookItem.read == true ? "Read" : "Not yet read."}</p>
                     `;
+  })
 
-    bookCards.appendChild(card);
-
-    console.log(bookItem);
-  }
+  bookCards.appendChild(card)
 }
 
+
+displayBooks()
+
 addBookToLibrary();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // modal functionality
 
@@ -75,8 +90,6 @@ openModalBtn.addEventListener("click", openModal);
 
 closeModalBtn.addEventListener("click", closeModal);
 
-console.log(myLibrary);
-
 function openModal() {
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden");
@@ -87,4 +100,3 @@ function closeModal() {
   overlay.classList.add("hidden");
 }
 
-// add content into the card

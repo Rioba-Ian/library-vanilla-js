@@ -1,8 +1,8 @@
 let myLibrary = [
   {
     book: "The Hobbit",
-    author: "JK Rowlins",
-    pages: 289,
+    author: "J.R.R. Tolkien",
+    pages: 310,
     read: true,
   },
 ];
@@ -47,10 +47,10 @@ function displayBooks() {
   card.classList.add("card");
 
   myLibrary.map((bookItem) => {
-    card.innerHTML = `<p>${bookItem.book}</p>
-                    <p>${bookItem.author}</p>
-                    <p>${bookItem.book}</p>
-                    <p>${bookItem.read == true ? "Read" : "Not yet read."}</p>
+    card.innerHTML = `<h3>${bookItem.book}</h3>
+                    <h4>${bookItem.author}</h4>
+                    <p class="book--pages">${bookItem.pages}</p>
+                    <p class="book--read">${bookItem.read == true ? "Read" : "Not yet read."}</p>
                     `;
   })
 

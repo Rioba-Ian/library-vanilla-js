@@ -1,20 +1,18 @@
 let myLibrary = [
   {
-    "book": "The Hobbit",
-    "author": "JK Rowlins",
-    "pages": 289,
-    "read": true
-  }
-]
+    book: "The Hobbit",
+    author: "JK Rowlins",
+    pages: 289,
+    read: true,
+  },
+];
 
-const form = document.querySelector("form")
+const form = document.querySelector("form");
 
-const bookCards = document.querySelector(".book-cards")
-
+const bookCards = document.querySelector(".book-cards");
 
 function Book() {
   // constructor ..
-
 }
 
 function addBookToLibrary() {
@@ -22,75 +20,71 @@ function addBookToLibrary() {
 
   // add book to my library
   form.addEventListener("submit", function (e) {
-    e.preventDefault()
-  
-    const formData = new FormData(form)
-  
-    const readVal = formData.get('read')
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const readVal = formData.get("read");
     if (!readVal) {
-      formData.append('read', false)
+      formData.append("read", false);
     }
-  
-    const formDataObj = Object.fromEntries(formData.entries())
-  
-    myLibrary = [...myLibrary, formDataObj]
-    console.log(formDataObj)
-    console.log(myLibrary)
-  
-    form.reset()
-    closeModal()
 
-  })
+    const formDataObj = Object.fromEntries(formData.entries());
+
+    myLibrary = [...myLibrary, formDataObj];
+    console.log(formDataObj);
+    console.log(myLibrary);
+
+    form.reset();
+    closeModal();
+
+    // bookCards.remove(bookCards.children)
+
+    displayBooks();
+
+  });
 }
 
-function addBookToDisplay(){
-  myLibrary.forEach((bookItem)=> {
-    const card = document.createElement("div")
-    card.classList.add("card")
+function displayBooks() {
+  for (let bookItem of myLibrary) {
+    const card = document.createElement("div");
+    card.classList.add("card");
     card.innerHTML = `<p>${bookItem.book}</p>
-                      <p>${bookItem.author}</p>
-                      <p>${bookItem.book}</p>
-                      <p>${bookItem.read == true? "Read": "Not yet read."}</p>
-                      `
-  
-    bookCards.appendChild(card)
-  })
+                    <p>${bookItem.author}</p>
+                    <p>${bookItem.book}</p>
+                    <p>${bookItem.read == true ? "Read" : "Not yet read."}</p>
+                    `;
+
+    bookCards.appendChild(card);
+
+    console.log(bookItem);
+  }
 }
 
-addBookToLibrary()
-
-addBookToDisplay()
-
-
-
+addBookToLibrary();
 
 // modal functionality
 
-const modal = document.querySelector("#modal")
+const modal = document.querySelector("#modal");
 
-const openModalBtn = document.querySelector(".add-book")
-const closeModalBtn = document.querySelector("#close-modal")
-const overlay = document.querySelector(".overlay")
+const openModalBtn = document.querySelector(".add-book");
+const closeModalBtn = document.querySelector("#close-modal");
+const overlay = document.querySelector(".overlay");
 
+openModalBtn.addEventListener("click", openModal);
 
-openModalBtn.addEventListener("click", openModal)
+closeModalBtn.addEventListener("click", closeModal);
 
-closeModalBtn.addEventListener("click", closeModal)
-
-console.log(myLibrary)
-
+console.log(myLibrary);
 
 function openModal() {
-  modal.classList.remove("hidden")
-  overlay.classList.remove("hidden")
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
 }
 
 function closeModal() {
-  modal.classList.add("hidden")
-  overlay.classList.add("hidden")
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
 }
 
 // add content into the card
-
-
-

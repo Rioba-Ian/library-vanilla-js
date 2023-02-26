@@ -201,9 +201,12 @@ header button {
 }
 
 .card {
-  width: min(80%, 300px);
+  width: min(80%, 200px);
   border-radius: 50px;
   background: #415ce1;
   box-shadow: 20px 20px 60px #374ebf,
     -20px -20px 60px #4b6aff;
+
+  display: block;
+  padding: 1em 2em;
 }

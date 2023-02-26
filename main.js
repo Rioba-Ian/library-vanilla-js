@@ -53,11 +53,6 @@ openModalBtn.addEventListener("click", openModal)
 
 closeModalBtn.addEventListener("click", closeModal)
 
-
-
-
-
-
 console.log(myLibrary)
 
 

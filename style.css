@@ -111,6 +111,11 @@ button:focus-visible {
   button:hover {
     background-color: #656ac8;
   }
+
+  .main-section h2 {
+    background-image: linear-gradient(134deg, #f0437a 25%, #3D6F8E 25%, #3D6F8E 50%, #f0437a 50%, #f0437a 75%, #3D6F8E 75%, #3D6F8E 100%);
+    background-size: 55.61px 57.58px;
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -127,6 +132,11 @@ button:focus-visible {
 
   button:hover {
     background-color: #363636;
+  }
+
+  .main-section h2 {
+    background-image: linear-gradient(134deg, #f0437a 25%, #3D6F8E 25%, #3D6F8E 50%, #f0437a 50%, #f0437a 75%, #3D6F8E 75%, #3D6F8E 100%);
+    background-size: 55.61px 57.58px;
   }
 }
 
@@ -205,6 +215,15 @@ footer {
   font-weight: 900;
 }
 
+.book-cards {
+  display: flex;
+  align-items: start;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+
+  padding-top: 2vmin;
+}
+
 .card {
   width: min(80%, 200px);
   border-radius: 50px;
@@ -212,10 +231,10 @@ footer {
   box-shadow: 20px 20px 60px #374ebf,
     -20px -20px 60px #4b6aff;
 
-  display: block;
   padding: 1em 2em;
   font-family: Helvetica, sans-serif;
   font-size: 1.125rem;
+  display: block;
 }
 
 .card p {}

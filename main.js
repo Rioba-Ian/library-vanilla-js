@@ -51,10 +51,17 @@ function displayBooks() {
                     <h4>Author: ${bookItem.author}</h4>
                     <p class="book--pages">Pages: ${bookItem.pages}</p>
                     <p class="book--read">Read Status: ${bookItem.read == true ? "Read" : "Not yet read."}</p>
+                    <label class="switch">
+                      <input type="checkbox" checked="">
+                    </label>
                     `;
   })
 
   bookCards.appendChild(card)
+}
+
+function toggleReadStatus() {
+  const readStatus = document.querySelector(".book--read")
 }
 
 

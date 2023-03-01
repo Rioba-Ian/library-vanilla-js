@@ -36,11 +36,9 @@ function addBookToLibrary() {
     form.reset();
     closeModal();
 
-    displayBooks()
+    displayBooks();
   });
-
 }
-
 
 function displayBooks() {
   const card = document.createElement("div");
@@ -50,40 +48,28 @@ function displayBooks() {
     card.innerHTML = `<h3>Book: ${bookItem.book}</h3>
                     <h4>Author: ${bookItem.author}</h4>
                     <p class="book--pages">Pages: ${bookItem.pages}</p>
-                    <p class="book--read">Read Status: ${bookItem.read == true ? "Read" : "Not yet read."}</p>
+                    <p class="book--read">Read Status: ${
+                      bookItem.read == true ? "Read" : "Not yet read."
+                    }</p>
                     <label class="switch">
                       <input type="checkbox" checked="">
                     </label>
+                    <span id="delete--book" class="material-symbols-rounded">
+                    delete
+                    </span>
                     `;
-  })
+  });
 
-  bookCards.appendChild(card)
+  bookCards.appendChild(card);
 }
 
 function toggleReadStatus() {
-  const readStatus = document.querySelector(".book--read")
+  const readStatus = document.querySelector(".book--read");
 }
 
-
-displayBooks()
+displayBooks();
 
 addBookToLibrary();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // modal functionality
 
@@ -106,4 +92,3 @@ function closeModal() {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
 }
-

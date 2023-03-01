@@ -52,7 +52,8 @@ function displayBooks() {
                       bookItem.read == true ? "Read" : "Not yet read."
                     }</p>
                     <label class="switch">
-                      <input type="checkbox" checked="">
+                      <input type="checkbox" ${bookItem.read == true? "checked": ""}>
+                      <span class="slider"></span>
                     </label>
                     <span id="delete--book" class="material-symbols-rounded">
                     delete

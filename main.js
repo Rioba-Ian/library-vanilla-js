@@ -6,6 +6,13 @@ let myLibrary = [
     pages: 310,
     read: true,
   },
+  {
+    index: 2,
+    book: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    pages: 310,
+    read: true,
+  },
 ];
 
 const form = document.querySelector("form");
@@ -88,10 +95,10 @@ function deleteBook() {
     deleteBtn.addEventListener("click", removeBook);
 
     function removeBook() {
-      console.log(selectedCard);
-      console.log(selectedCard.parentElement);
-
       selectedCard.parentElement.removeChild(selectedCard);
+
+      removeFromLibrary(selectedCard)
+      console.log(myLibrary);
     }
   }
 
@@ -106,14 +113,28 @@ function deleteBook() {
       deleteItem.addEventListener("click", removeBook);
 
       function removeBook() {
-        console.log(selectedCard);
-        console.log(selectedCard.parentElement);
-
+        // remove book from display
+        console.log(myLibrary);
         selectedCard.parentElement.removeChild(selectedCard);
+        console.log(myLibrary);
+        removeFromLibrary(selectedCard)
+        console.log(myLibrary.length);
       }
+
     });
   }
 
+
+  function removeFromLibrary(item){
+    const itemIndex = Number(item.getAttribute("data-index"))
+
+    for (let bookItem of myLibrary){
+      if (bookItem.index === itemIndex){
+        myLibrary.splice(itemIndex, 1)
+      }
+    }
+  }
+  
 
 }
 
@@ -122,6 +143,8 @@ displayBooks();
 addBookToLibrary();
 
 deleteBook();
+
+console.log(myLibrary);
 
 // modal functionality to add book into library
 
@@ -144,3 +167,6 @@ function closeModal() {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
 }
+
+
+// setInterval(()=> console.log([...myLibrary]), 2000)

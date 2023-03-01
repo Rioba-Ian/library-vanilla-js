@@ -28,7 +28,7 @@ function addBookToLibrary() {
       formData.append("read", false);
     }
 
-    const formerIndex = [...myLibrary].at(-1).index 
+    const formerIndex = [...myLibrary].at(-1) ? [...myLibrary].at(-1).index : 0
     
     const formDataObj = Object.fromEntries(formData.entries());
 
@@ -93,7 +93,10 @@ function deletefromLibrary(){
       bookItem.index != selectedCard.getAttribute("data-index")
     })
     
-    selectedCard.innerHTML = ""
+    console.log(myLibrary)
+    const bookCardHolder = selectedCard.parentElement
+
+    bookCardHolder.removeChild(selectedCard)
   }
 }
 

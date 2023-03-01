@@ -66,6 +66,7 @@ function displayBooks() {
                     delete
                     </span>
                     `;
+    card.setAttribute("data-index", bookItem.index)
   });
 
   bookCards.appendChild(card);
@@ -79,12 +80,28 @@ function toggleReadStatus() {
 // delete a book
 
 function deletefromLibrary(){
+  // once the delete button has been clicked 
+  const deleteBtn = document.querySelector("#delete--book")
 
+  // get the specific card
+  const selectedCard = deleteBtn.parentElement
+
+  deleteBtn.addEventListener("click", removeBook)
+
+  function removeBook(){
+    myLibrary = myLibrary.filter((bookItem)=> {
+      bookItem.index != selectedCard.getAttribute("data-index")
+    })
+    
+    selectedCard.innerHTML = ""
+  }
 }
 
 displayBooks();
 
 addBookToLibrary();
+
+deletefromLibrary()
 
 // modal functionality to add book into library
 

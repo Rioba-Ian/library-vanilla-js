@@ -28,14 +28,13 @@ function addBookToLibrary() {
       formData.append("read", false);
     }
 
-    const formerIndex = [...myLibrary].at(-1) ? [...myLibrary].at(-1).index : 0
-    
+    const formerIndex = [...myLibrary].at(-1) ? [...myLibrary].at(-1).index : 0;
+
     const formDataObj = Object.fromEntries(formData.entries());
 
-    formDataObj.index = formerIndex+1
+    formDataObj.index = formerIndex + 1;
 
-
-    myLibrary = [...myLibrary, formDataObj]
+    myLibrary = [...myLibrary, formDataObj];
     console.log(formDataObj);
     console.log(myLibrary);
 
@@ -47,11 +46,11 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
-  const card = document.createElement("div");
-  card.classList.add("card");
   
 
   myLibrary.map((bookItem) => {
+    const card = document.createElement("div");
+  card.classList.add("card");
     card.innerHTML = `<h3>Book: ${bookItem.book}</h3>
                     <h4>Author: ${bookItem.author}</h4>
                     <p class="book--pages">Pages: ${bookItem.pages}</p>
@@ -59,17 +58,19 @@ function displayBooks() {
                       bookItem.read == true ? "Read" : "Not yet read."
                     }</p>
                     <label class="switch">
-                      <input type="checkbox" ${bookItem.read == true? "checked": ""}>
+                      <input type="checkbox" ${
+                        bookItem.read == true ? "checked" : ""
+                      }>
                       <span class="slider"></span>
                     </label>
                     <span id="delete--book" class="material-symbols-rounded">
                     delete
                     </span>
                     `;
-    card.setAttribute("data-index", bookItem.index)
+    card.setAttribute("data-index", bookItem.index);
+    bookCards.appendChild(card);
   });
 
-  bookCards.appendChild(card);
 }
 
 // toggle the read status from not yet to read and vice versa
@@ -79,32 +80,48 @@ function toggleReadStatus() {
 
 // delete a book
 
-function deletefromLibrary(){
-  // once the delete button has been clicked 
-  const deleteBtn = document.querySelector("#delete--book")
+function deleteBook() {
+  if (myLibrary.length > 0 && myLibrary.length < 2) {
+    const deleteBtn = document.querySelector("#delete--book");
+    const selectedCard = deleteBtn.parentElement;
 
-  // get the specific card
-  const selectedCard = deleteBtn.parentElement
+    deleteBtn.addEventListener("click", removeBook);
 
-  deleteBtn.addEventListener("click", removeBook)
+    function removeBook() {
+      console.log(selectedCard);
+      console.log(selectedCard.parentElement);
 
-  function removeBook(){
-    myLibrary = myLibrary.filter((bookItem)=> {
-      bookItem.index != selectedCard.getAttribute("data-index")
-    })
-    
-    console.log(myLibrary)
-    const bookCardHolder = selectedCard.parentElement
-
-    bookCardHolder.removeChild(selectedCard)
+      selectedCard.parentElement.removeChild(selectedCard);
+    }
   }
+
+  if (myLibrary.length > 1) {
+    const deleteBtns = document.querySelectorAll("#delete--book");
+
+    deleteBtns.forEach((deleteItem) => {
+      deleteItem.addEventListener("click", removeBook);
+
+      const selectedCard = deleteItem.parentElement;
+
+      deleteItem.addEventListener("click", removeBook);
+
+      function removeBook() {
+        console.log(selectedCard);
+        console.log(selectedCard.parentElement);
+
+        selectedCard.parentElement.removeChild(selectedCard);
+      }
+    });
+  }
+
+
 }
 
 displayBooks();
 
 addBookToLibrary();
 
-deletefromLibrary()
+deleteBook();
 
 // modal functionality to add book into library
 

@@ -1,5 +1,6 @@
 let myLibrary = [
   {
+    index: 1,
     book: "The Hobbit",
     author: "J.R.R. Tolkien",
     pages: 310,
@@ -27,9 +28,14 @@ function addBookToLibrary() {
       formData.append("read", false);
     }
 
+    const formerIndex = [...myLibrary].at(-1).index 
+    
     const formDataObj = Object.fromEntries(formData.entries());
 
-    myLibrary = [...myLibrary, formDataObj];
+    formDataObj.index = formerIndex+1
+
+
+    myLibrary = [...myLibrary, formDataObj]
     console.log(formDataObj);
     console.log(myLibrary);
 
@@ -43,6 +49,7 @@ function addBookToLibrary() {
 function displayBooks() {
   const card = document.createElement("div");
   card.classList.add("card");
+  
 
   myLibrary.map((bookItem) => {
     card.innerHTML = `<h3>Book: ${bookItem.book}</h3>
@@ -64,15 +71,22 @@ function displayBooks() {
   bookCards.appendChild(card);
 }
 
+// toggle the read status from not yet to read and vice versa
 function toggleReadStatus() {
   const readStatus = document.querySelector(".book--read");
+}
+
+// delete a book
+
+function deletefromLibrary(){
+
 }
 
 displayBooks();
 
 addBookToLibrary();
 
-// modal functionality
+// modal functionality to add book into library
 
 const modal = document.querySelector("#modal");
 
